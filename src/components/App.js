@@ -1,18 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Home from '../pages/Home';
 const AppContext = React.createContext();
 
 function App() {
   const [theme, setTheme] = useState('light');
-  return (
-    <AppContext.Provider value={theme}>
-      <div className="App">
-        <Home />
-      </div>
-    </AppContext.Provider>
+  const [favorites, setFavorites] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState();
+  const [emojis, setEmojis] = useState();
 
-  );
+  const contextValue = {
+    searchTerm, emojis, setSearchResults, setSearchTerm, searchResults
+  }
+
+  useEffect(() => {
+    const fetchAllEmojis = async () => {
+      try {
+        const url = `https://emoji-api.com/emojis?access_key=${process.env.REACT_APP_EMOJI_API}`;
+        const result = await fetch(url);
+        let json = await result.json();
+        setEmojis(json);
+        if (json.length) {
+          setIsLoading(false);
+        }
+        console.log(emojis?.length);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchAllEmojis();
+  }, [])
+
+  return isLoading ? <p>Loading...</p> : (
+    <AppContext.Provider value={contextValue}>
+      <>
+        <Home />
+      </>
+    </AppContext.Provider>
+  )
 }
 
-export { AppContext }
+export { AppContext };
 export default App;
