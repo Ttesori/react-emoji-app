@@ -8,8 +8,8 @@
 
 .emoji {
   /* transform: scale(0);
-  animation-name: popIn; */
-  animation-duration: 800ms;
+  animation-name: popIn;
+  animation-duration: 800ms; */
   animation-delay: 500ms;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
