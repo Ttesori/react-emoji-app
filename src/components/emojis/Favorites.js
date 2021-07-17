@@ -2,6 +2,7 @@ import AppContext from '../../contexts/app-context';
 import { useContext } from 'react';
 import Emoji from './Emoji';
 
+
 export default function Favorites() {
   const { favorites } = useContext(AppContext);
 

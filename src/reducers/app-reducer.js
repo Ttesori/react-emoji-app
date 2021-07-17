@@ -5,7 +5,7 @@ const reducer = (state, action) => {
     case ACTIONS.SET_EMOJIS:
       return ({ ...state, emojis: action.payload.emojis })
     case ACTIONS.SET_THEME:
-      return ({ ...state, theme: 'dark' })
+      return ({ ...state, theme: action.payload.theme })
     case ACTIONS.SET_TERM:
       return ({ ...state, searchTerm: action.payload.term })
     case ACTIONS.SET_RESULTS:

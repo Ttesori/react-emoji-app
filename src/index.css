@@ -3,7 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
-.search-results {
+body {
+  @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white;
+}
+
+#root {
+  @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white min-h-screen;
 }
 
 .emoji {
@@ -16,7 +21,15 @@
 }
 
 .btn-icon {
-  @apply py-1.5 px-2 bg-gray-300 text-gray-700 border mx-0.5 rounded hover:bg-gray-500 hover:text-white;
+  @apply py-1.5 px-2 bg-gray-300 text-gray-700 border mx-0.5 rounded dark:border-gray-800 hover:bg-gray-500 hover:text-white dark:bg-gray-700 dark:text-gray-300;
+}
+
+.btn-form {
+  @apply bg-gray-300 px-5 py-2 rounded dark:bg-gray-700 dark:text-white;
+}
+
+input[type='text'] {
+  @apply dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:border-gray-500;
 }
 
 @keyframes popIn {

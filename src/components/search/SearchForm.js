@@ -55,9 +55,9 @@ export default function SearchForm() {
     <form className="flex flex-col justify-center items-center ">
       <label htmlFor="search" className="sr-only">Search The Emojis</label>
       <div className="fieldset flex w-full">
-        <input className="px-5 py-2 border rounded mr-2 flex-1" type="text" placeholder="Search..." id="search" onChange={handleTerm} />
-        <button className="bg-gray-300 px-5 py-2 rounded mr-1" onClick={handleSearch}>Search</button>
-        <button className="bg-gray-300 px-5 py-2 rounded" onClick={handleClear}>X Clear</button>
+        <input className="px-5 py-2 border rounded mr-2 flex-1 dark:bg-gray-600 dark:text-white" type="text" placeholder="Search..." id="search" onChange={handleTerm} />
+        <button className="btn-form mr-1" onClick={handleSearch}>Search</button>
+        <button className="btn-form" onClick={handleClear}>X Clear</button>
       </div>
 
     </form>

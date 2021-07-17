@@ -6,10 +6,12 @@
 
 import React, { useState, useEffect, useReducer } from 'react';
 import Home from '../pages/Home';
+import FavoritesPage from '../pages/Favorites';
 import AppContext from '../contexts/app-context';
 import reducer from '../reducers/app-reducer';
 import ACTIONS from '../reducers/app-actions';
 import EMOJIS from '../data';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +34,11 @@ function App() {
       })
     }
     setIsLoading(false);
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    document.body.className = state.theme
+  }, [state.theme])
 
 
   const contextValue = {
@@ -41,11 +47,17 @@ function App() {
     favorites: state.favorites,
     searchTerm: state.searchTerm,
     searchResults: state.searchResults,
+    theme: state.theme
   }
 
   return isLoading ? <p>Loading...</p> : (
     <AppContext.Provider value={contextValue}>
-      <Home />
+      <Router>
+        <Switch>
+          <Route path="/" exact={true} component={Home} />
+          <Route path="/favorites" component={FavoritesPage} />
+        </Switch>
+      </Router>
     </AppContext.Provider>
   )
 }
