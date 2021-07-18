@@ -1,17 +1,23 @@
 import ACTIONS from './app-actions';
+import EMOJIS from '../data';
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case ACTIONS.SET_EMOJIS:
-      return ({ ...state, emojis: action.payload.emojis })
     case ACTIONS.SET_THEME:
       return ({ ...state, theme: action.payload.theme })
     case ACTIONS.SET_TERM:
+      console.log(action.payload.term);
       return ({ ...state, searchTerm: action.payload.term })
     case ACTIONS.SET_RESULTS:
-      return ({ ...state, searchResults: action.payload.results })
+      let found = EMOJIS.filter(emoji => emoji.slug.includes(action.payload.term) || emoji.group.includes(action.payload.term));
+      console.log(found.length);
+      return ({ ...state, searchResults: found })
+    case ACTIONS.CLEAR_RESULTS:
+      return ({ ...state, searchResults: [] })
     case ACTIONS.SET_FAVORITES:
       return ({ ...state, favorites: action.payload.favorites })
+    case ACTIONS.SET_LOADING:
+      return ({ ...state, loading: action.payload.loading })
     case ACTIONS.TOGGLE_FAVORITE:
       let newFavs = [];
       if (state.favorites.some(emoji => action.payload.emoji.slug === emoji.slug)) {

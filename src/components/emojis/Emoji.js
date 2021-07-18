@@ -51,7 +51,7 @@ export default function Emoji({ emoji }) {
   }
 
   return (emoji.character.length > 0) && (
-    <article className="emoji bg-gray-100 dark:bg-gray-600 rounded p-3 text-center flex flex-col justify-between items-center">
+    <article className="emoji shadow bg-white dark:bg-gray-600 rounded p-3 text-center flex flex-col justify-between items-center">
       <span className="text-5xl">{emoji.character}</span>
       <h3 className="text-xs uppercase text-gray-500 mt-2 dark:text-gray-300">{emoji.unicodeName}</h3>
 

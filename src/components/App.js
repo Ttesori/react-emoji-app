@@ -8,6 +8,7 @@ import React, { useState, useEffect, useReducer } from 'react';
 import Home from '../pages/Home';
 import FavoritesPage from '../pages/Favorites';
 import AppContext from '../contexts/app-context';
+import EmojiContext from '../contexts/emoji-context';
 import reducer from '../reducers/app-reducer';
 import ACTIONS from '../reducers/app-actions';
 import EMOJIS from '../data';
@@ -20,7 +21,8 @@ function App() {
     theme: 'light',
     favorites: [],
     searchTerm: '',
-    searchResults: undefined,
+    searchResults: [],
+    loading: false
   });
 
   useEffect(() => {
@@ -32,7 +34,13 @@ function App() {
           favorites: JSON.parse(faves)
         }
       })
-    }
+    };
+    dispatch({
+      type: ACTIONS.SET_LOADING,
+      payload: {
+        loading: false
+      }
+    })
     setIsLoading(false);
   }, []);
 
@@ -43,22 +51,25 @@ function App() {
 
   const contextValue = {
     ACTIONS, dispatch,
-    emojis: EMOJIS,
     favorites: state.favorites,
     searchTerm: state.searchTerm,
     searchResults: state.searchResults,
-    theme: state.theme
+    theme: state.theme,
+    loading: state.loading
   }
 
   return isLoading ? <p>Loading...</p> : (
-    <AppContext.Provider value={contextValue}>
-      <Router>
-        <Switch>
-          <Route path="/" exact={true} component={Home} />
-          <Route path="/favorites" component={FavoritesPage} />
-        </Switch>
-      </Router>
-    </AppContext.Provider>
+    <EmojiContext.Provider value={{ emojis: EMOJIS }}>
+      <AppContext.Provider value={contextValue}>
+        <Router>
+          <Switch>
+            <Route path="/" exact={true} component={Home} />
+            <Route path="/favorites" component={FavoritesPage} />
+          </Switch>
+        </Router>
+      </AppContext.Provider>
+    </EmojiContext.Provider >
+
   )
 }
 export default App;

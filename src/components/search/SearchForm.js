@@ -1,26 +1,35 @@
 import AppContext from '../../contexts/app-context';
+import EmojiContext from '../../contexts/emoji-context';
 import { useContext } from "react";
 import ACTIONS from '../../reducers/app-actions';
 
 export default function SearchForm() {
-  const { emojis, searchTerm, dispatch } = useContext(AppContext);
+  const { searchTerm, dispatch } = useContext(AppContext);
+  const { emojis } = useContext(EmojiContext);
 
   const handleSearch = (e) => {
-
     e.preventDefault();
     console.log('searching');
+    // dispatch({
+    //   type: ACTIONS.SET_RESULTS,
+    //   payload: {
+    //     results: []
+    //   }
+    // });
+    updateResults(searchTerm);
+  }
+
+  const updateResults = (newTerm) => {
     dispatch({
-      type: ACTIONS.SET_RESULTS,
+      type: ACTIONS.SET_LOADING,
       payload: {
-        results: []
+        loading: true
       }
     });
-    let found = emojis.filter(emoji => emoji.slug.includes(searchTerm) || emoji.group.includes(searchTerm));
-    console.log(found.length);
     dispatch({
       type: ACTIONS.SET_RESULTS,
       payload: {
-        results: found
+        term: newTerm
       }
     });
   }
@@ -30,7 +39,7 @@ export default function SearchForm() {
     dispatch({
       type: ACTIONS.SET_RESULTS,
       payload: {
-        results: undefined
+        results: emojis
       }
     });
     dispatch({
@@ -42,20 +51,27 @@ export default function SearchForm() {
   }
 
   const handleTerm = (e) => {
-    if (e.target.value.length === 0) return;
+    let newTerm = e.target.value.toLowerCase();
+    console.log(newTerm)
     dispatch({
       type: ACTIONS.SET_TERM,
       payload: {
-        term: e.target.value.toLowerCase()
+        term: newTerm
       }
-    })
+    });
+    if (newTerm.length >= 3) updateResults(newTerm);
+    if (newTerm.length < 3) {
+      dispatch({
+        type: ACTIONS.CLEAR_RESULTS
+      })
+    }
   }
 
   return (
     <form className="flex flex-col justify-center items-center ">
       <label htmlFor="search" className="sr-only">Search The Emojis</label>
       <div className="fieldset flex w-full">
-        <input className="px-5 py-2 border rounded mr-2 flex-1 dark:bg-gray-600 dark:text-white" type="text" placeholder="Search..." id="search" onChange={handleTerm} />
+        <input className="px-5 py-2 border rounded mr-2 flex-1 dark:bg-gray-600 dark:text-white" type="text" placeholder="Search..." id="search" onChange={handleTerm} value={searchTerm} />
         <button className="btn-form mr-1" onClick={handleSearch}>Search</button>
         <button className="btn-form" onClick={handleClear}>X Clear</button>
       </div>

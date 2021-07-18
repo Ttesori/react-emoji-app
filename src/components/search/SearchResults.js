@@ -1,10 +1,14 @@
 import AppContext from '../../contexts/app-context';
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Emoji from '../emojis/Emoji';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import ACTIONS from '../../reducers/app-actions';
 
 export default function SearchResults() {
-  const { searchResults } = useContext(AppContext);
+  const { searchResults, loading, dispatch, searchTerm } = useContext(AppContext);
+  const [mappedResults, setMappedResults] = useState([]);
+  const [localLoading, setLocalLoading] = useState(true);
+
   // const [shownResults, setShownResults] = useState([]);
   // const [more, setMore] = useState(true);
   // const [startingAt, setStartingAt] = useState(0);
@@ -27,15 +31,51 @@ export default function SearchResults() {
   //   setMore(LIMIT > state.searchResults.length ? false : true)
   // }, [state.searchResults, state.searchTerm]);
 
-  if (searchResults === undefined) {
-    return <div>Enter a term above to search</div>
-  }
-  if (searchResults?.length === 0) {
+
+
+  useEffect(() => {
+    setLocalLoading(loading);
+    console.log(loading);
+  }, [loading]);
+
+
+
+  useEffect(() => {
+    const mapResults = () => {
+      if (searchResults.length === 0) {
+        dispatch({
+          type: ACTIONS.SET_LOADING,
+          payload: {
+            loading: false
+          }
+        })
+        return setMappedResults([]);
+      }
+      let results = searchResults.map(result => <Emoji key={result.slug + Math.ceil(Math.random() * 9999)} emoji={result} />);
+      setMappedResults(results);
+      dispatch({
+        type: ACTIONS.SET_LOADING,
+        payload: {
+          loading: false
+        }
+      })
+    }
+    mapResults();
+  }, [searchResults, dispatch])
+
+  if (localLoading) return <p>Loading...</p>;
+
+  if (mappedResults?.length === 0 && searchTerm.length >= 3) {
     return <div>No results found.</div>
   }
-  return (
+
+  if (mappedResults?.length === 0) {
+    return <div>Enter search terms above</div>
+  }
+
+  return !localLoading && (
     <div className="search-results grid grid-cols-4 gap-4 mt-4">
-      {searchResults.map(result => <Emoji key={result.slug + Math.ceil(Math.random() * 9999)} emoji={result} />)}
+      {mappedResults}
     </div>
   )
 }
