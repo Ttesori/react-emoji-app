@@ -19,8 +19,8 @@ export default function Main({ children }) {
   }
   return (
     <div className="dark:bg-gray-900 dark:text-white">
-      <header className="bg-gray-300 flex p-5 justify-between dark:bg-gray-800 dark:text-white">
-        <h1 className="text-xl font-bold">EmojiHunt</h1>
+      <header className="bg-indigo-300 flex p-5 justify-between dark:bg-indigo-800 dark:text-white mb-7 items-center">
+        <h1 className="text-xl font-bold"><span className="text-2xl mr-1">🕵️‍♀️ </span> EmojiHunt</h1>
         <nav>
           <NavLink exact to="/" className="mr-3" activeClassName="font-bold">Search</NavLink>
           <NavLink exact to="/favorites" className="mr-3" activeClassName="font-bold">Favorites</NavLink>

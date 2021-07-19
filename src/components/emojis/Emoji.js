@@ -1,5 +1,5 @@
 import AppContext from '../../contexts/app-context';
-import { FaRegCopy, FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaRegCopy, FaHeart, FaRegHeart, FaCheck } from "react-icons/fa";
 import BtnIcon from "../common/BtnIcon";
 import { useContext, useState, useMemo } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
@@ -51,14 +51,14 @@ export default function Emoji({ emoji }) {
   }
 
   return (emoji.character.length > 0) && (
-    <article className="emoji shadow bg-white dark:bg-gray-600 rounded p-3 text-center flex flex-col justify-between items-center">
+    <article className="emoji shadow bg-white dark:bg-indigo-800 rounded p-3 text-center flex flex-col justify-between items-center">
       <span className="text-5xl">{emoji.character}</span>
-      <h3 className="text-xs uppercase text-gray-500 mt-2 dark:text-gray-300">{emoji.unicodeName}</h3>
+      <h3 className="text-xs uppercase text-indigo-500 mt-2 dark:text-indigo-300">{emoji.unicodeName}</h3>
 
       <footer className="mt-2">
         <CopyToClipboard text={emoji.character}
           onCopy={() => handleOnCopy(emoji.character)}>
-          <button className={`btn-icon ${copied}`}><FaRegCopy /></button>
+          <button className={`btn-icon ${copied}`}>{!copied ? <FaRegCopy /> : <FaCheck />}</button>
         </CopyToClipboard>
 
         <BtnIcon handleOnClick={() => localToggleFavorite(emoji)}>{isFavorite(emoji) ? <FaHeart /> : <FaRegHeart />}</BtnIcon>

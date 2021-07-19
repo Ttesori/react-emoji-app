@@ -1,5 +1,6 @@
 import AppContext from '../../contexts/app-context';
 import { useContext, useEffect, useState } from "react";
+import { FaArrowUp } from 'react-icons/fa';
 import Emoji from '../emojis/Emoji';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ACTIONS from '../../reducers/app-actions';
@@ -70,7 +71,12 @@ export default function SearchResults() {
   }
 
   if (mappedResults?.length === 0) {
-    return <div>Enter search terms above</div>
+    return (
+      <div className="mt-5 px-5 py-10 border-2 border-dashed border-indigo-200 dark:border-indigo-700 w-full text-center rounded italic text-indigo-500">
+        <p><FaArrowUp className="inline-block mr-2 w-10 h-10 text-indigo-300 dark:text-indigo-700 mb-2" /><br />
+          Enter your search terms above.</p>
+      </div>
+    )
   }
 
   return !localLoading && (

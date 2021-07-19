@@ -8,7 +8,7 @@ export default function Favorites() {
 
   return (
     <>
-      <h3>My Favorite Emojis ({favorites.length})</h3>
+      <h3 className="text-xl font-bold text-center mb-2"><span className="text-3xl mr-2">😍</span> My Favorite Emojis ({favorites.length})</h3>
       <div className="favorites mb-5 grid grid-cols-4 gap-4 mt-4">
         {favorites.map(favorite => <Emoji key={favorite.slug + Math.ceil(Math.random() * 9999)} emoji={favorite} />)}
       </div>

@@ -2,6 +2,7 @@ import AppContext from '../../contexts/app-context';
 import EmojiContext from '../../contexts/emoji-context';
 import { useContext } from "react";
 import ACTIONS from '../../reducers/app-actions';
+import { FaSearch } from 'react-icons/fa';
 
 export default function SearchForm() {
   const { searchTerm, dispatch } = useContext(AppContext);
@@ -68,12 +69,12 @@ export default function SearchForm() {
   }
 
   return (
-    <form className="flex flex-col justify-center items-center ">
+    <form className="flex flex-col justify-center items-center w-full">
       <label htmlFor="search" className="sr-only">Search The Emojis</label>
       <div className="fieldset flex w-full">
-        <input className="px-5 py-2 border rounded mr-2 flex-1 dark:bg-gray-600 dark:text-white" type="text" placeholder="Search..." id="search" onChange={handleTerm} value={searchTerm} />
-        <button className="btn-form mr-1" onClick={handleSearch}>Search</button>
-        <button className="btn-form" onClick={handleClear}>X Clear</button>
+        <input className="px-5 py-2 border dark:border-indigo-700 rounded mr-2 flex-1 dark:bg-indigo-900 dark:text-indigo-200 placeholder-indigo-300" type="text" placeholder="Search..." id="search" onChange={handleTerm} value={searchTerm} />
+        <button className="btn-form mr-1" onClick={handleSearch}><FaSearch /></button>
+
       </div>
 
     </form>
