@@ -45,7 +45,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    document.body.className = state.theme
+    document.documentElement.className = state.theme;
   }, [state.theme])
 
 

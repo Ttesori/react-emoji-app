@@ -18,10 +18,10 @@ export default function Main({ children }) {
     })
   }
   return (
-    <div className="dark:bg-gray-900 dark:text-white">
-      <header className="bg-indigo-300 p-5  dark:bg-indigo-800 dark:text-white mb-7">
-        <div className="container flex justify-between items-center max-w-screen-lg mx-auto">
-          <h1 className="text-xl font-bold text-gray-800 dark:text-indigo-50"><span className="text-2xl mr-1">🕵️‍♀️ </span> EmojiHunt</h1>
+    <>
+      <header className="bg-indigo-300 p-5  dark:bg-indigo-800 dark:text-white mb-5 sm:mb-7">
+        <div className="container flex flex-col sm:flex-row justify-between items-center max-w-screen-lg mx-auto">
+          <h1 className="text-2xl sm:text-xl font-bold text-gray-800 dark:text-indigo-50 mb-2 sm:mb-0"><span className="text-2xl mr-1">🕵️‍♀️ </span> EmojiHunt</h1>
           <nav>
             <NavLink exact to="/" className="mr-3" activeClassName="font-bold">Search</NavLink>
             <NavLink exact to="/favorites" className="mr-3" activeClassName="font-bold">Favorites</NavLink>
@@ -30,10 +30,13 @@ export default function Main({ children }) {
         </div>
 
       </header>
-      <main className="max-w-screen-md mx-auto my-5 px-5 flex flex-col justify-center items-center">
+      <main className="w-full max-w-screen-md mx-auto my-2 sm:my-5 px-5 flex flex-col justify-center items-center">
         {children}
       </main>
       <ToastContainer />
-    </div>
+      <footer className="bg-indigo-300 p-5  dark:bg-indigo-800 dark:text-indigo-400 mt-3">
+        <p className="font-bold text-center text-sm uppercase tracking-wide"><a href="https://tonitesori.dev" className="text-indigo-800 dark:text-indigo-300  dark:hover:text-indigo-200">React Development by Toni</a>  🐧 </p>
+      </footer>
+    </>
   )
 }

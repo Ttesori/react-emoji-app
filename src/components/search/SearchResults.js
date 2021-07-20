@@ -95,7 +95,7 @@ export default function SearchResults() {
   return !localLoading && (
     <div className="">
       <InfiniteScroll
-        className="search-results grid grid-cols-4 gap-4 mt-4 pb-10"
+        className="search-results grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4"
         scrollThreshold={1}
         dataLength={mappedResults.length} //This is important field to render the next data
         next={getMoreResults}
