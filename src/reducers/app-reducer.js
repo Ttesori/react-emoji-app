@@ -6,11 +6,9 @@ const reducer = (state, action) => {
     case ACTIONS.SET_THEME:
       return ({ ...state, theme: action.payload.theme })
     case ACTIONS.SET_TERM:
-      console.log(action.payload.term);
       return ({ ...state, searchTerm: action.payload.term })
     case ACTIONS.SET_RESULTS:
       let found = EMOJIS.filter(emoji => emoji.slug.includes(action.payload.term) || emoji.group.includes(action.payload.term));
-      console.log(found.length);
       return ({ ...state, searchResults: found })
     case ACTIONS.CLEAR_RESULTS:
       return ({ ...state, searchResults: [] })

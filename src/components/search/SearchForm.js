@@ -10,13 +10,6 @@ export default function SearchForm() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('searching');
-    // dispatch({
-    //   type: ACTIONS.SET_RESULTS,
-    //   payload: {
-    //     results: []
-    //   }
-    // });
     updateResults(searchTerm);
   }
 

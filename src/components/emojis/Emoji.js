@@ -43,7 +43,6 @@ export default function Emoji({ emoji }) {
       progress: undefined,
       transition: Zoom,
     });
-    console.log('copied');
     setCopied(true);
     setTimeout(() => {
       setCopied(false);

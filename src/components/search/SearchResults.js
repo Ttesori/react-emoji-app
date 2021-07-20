@@ -41,7 +41,6 @@ export default function SearchResults() {
 
   useEffect(() => {
     setLocalLoading(loading);
-    console.log(loading);
   }, [loading]);
 
 
