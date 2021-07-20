@@ -60,8 +60,8 @@ export default function SearchForm() {
         term: newTerm
       }
     });
-    if (newTerm.length >= 3) updateResults(newTerm);
-    if (newTerm.length < 3) {
+    if (newTerm.length >= 1) updateResults(newTerm);
+    if (newTerm.length === 0) {
       dispatch({
         type: ACTIONS.CLEAR_RESULTS
       })
@@ -72,7 +72,7 @@ export default function SearchForm() {
     <form className="flex flex-col justify-center items-center w-full">
       <label htmlFor="search" className="sr-only">Search The Emojis</label>
       <div className="fieldset flex w-full">
-        <input className="px-5 py-2 border dark:border-indigo-700 rounded mr-2 flex-1 dark:bg-indigo-900 dark:text-indigo-200 placeholder-indigo-300" type="text" placeholder="Search..." id="search" onChange={handleTerm} value={searchTerm} />
+        <input className="px-5 py-2 border bg-gray-50 dark:border-indigo-700 rounded mr-2 flex-1 dark:bg-indigo-900 dark:text-indigo-200 placeholder-gray-400 dark:placeholder-indigo-400 outline-none focus:ring ring-indigo-200 dark:ring-indigo-500" type="text" placeholder="Search..." id="search" onChange={handleTerm} value={searchTerm} />
         <button className="btn-form mr-1" onClick={handleSearch}><FaSearch /></button>
 
       </div>

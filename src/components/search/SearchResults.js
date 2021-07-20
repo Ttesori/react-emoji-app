@@ -9,18 +9,21 @@ export default function SearchResults() {
   const { searchResults, loading, dispatch, searchTerm } = useContext(AppContext);
   const [mappedResults, setMappedResults] = useState([]);
   const [localLoading, setLocalLoading] = useState(true);
+  const [startingAt, setStartingAt] = useState(0);
+  const [more, setMore] = useState(true);
+  const LIMIT = 20;
 
   // const [shownResults, setShownResults] = useState([]);
-  // const [more, setMore] = useState(true);
+  // 
   // const [startingAt, setStartingAt] = useState(0);
   // const LIMIT = 20;
 
-  // const getMoreResults = () => {
-  //   let results = state.searchResults.filter((result, i) => i > startingAt && i < startingAt + LIMIT);
-  //   setMore(results.length === 0 ? false : true);
-  //   setShownResults([...shownResults, ...results]);
-  //   setStartingAt(startingAt + LIMIT)
-  // }
+  const getMoreResults = () => {
+    let results = searchResults.slice(startingAt, startingAt + LIMIT);
+    setMore(results.length === 0 ? false : true);
+    setMappedResults([...mappedResults, ...mapResultsToEmoji(results)])
+    setStartingAt(startingAt + LIMIT)
+  }
 
   // useEffect(() => {
   //   setStartingAt(0);
@@ -32,7 +35,9 @@ export default function SearchResults() {
   //   setMore(LIMIT > state.searchResults.length ? false : true)
   // }, [state.searchResults, state.searchTerm]);
 
-
+  const mapResultsToEmoji = (arr) => {
+    return arr.map(result => <Emoji key={result.slug + Math.ceil(Math.random() * 9999)} emoji={result} />);
+  }
 
   useEffect(() => {
     setLocalLoading(loading);
@@ -52,7 +57,15 @@ export default function SearchResults() {
         })
         return setMappedResults([]);
       }
-      let results = searchResults.map(result => <Emoji key={result.slug + Math.ceil(Math.random() * 9999)} emoji={result} />);
+      let results;
+      if (searchResults.length > LIMIT) {
+        results = mapResultsToEmoji(searchResults.slice(0, LIMIT));
+        setStartingAt(startingAt + LIMIT);
+        setMore(true);
+      } else {
+        results = mapResultsToEmoji(searchResults);
+        setMore(false);
+      }
       setMappedResults(results);
       dispatch({
         type: ACTIONS.SET_LOADING,
@@ -66,22 +79,38 @@ export default function SearchResults() {
 
   if (localLoading) return <p>Loading...</p>;
 
-  if (mappedResults?.length === 0 && searchTerm.length >= 3) {
+  if (mappedResults?.length === 0 && searchTerm.length >= 1) {
     return <div>No results found.</div>
   }
 
   if (mappedResults?.length === 0) {
     return (
-      <div className="mt-5 px-5 py-10 border-2 border-dashed border-indigo-200 dark:border-indigo-700 w-full text-center rounded italic text-indigo-500">
-        <p><FaArrowUp className="inline-block mr-2 w-10 h-10 text-indigo-300 dark:text-indigo-700 mb-2" /><br />
+      <div className="mt-5 px-5 py-10 border-2 border-dashed border-indigo-200 dark:border-gray-700 w-full text-center rounded italic text-gray-500 dark:text-gray-400">
+        <p><FaArrowUp className="inline-block mr-2 w-10 h-10 text-indigo-300 dark:text-gray-600 mb-2 animate-bounce" /><br />
           Enter your search terms above.</p>
       </div>
     )
   }
 
   return !localLoading && (
-    <div className="search-results grid grid-cols-4 gap-4 mt-4">
-      {mappedResults}
+    <div className="">
+      <InfiniteScroll
+        className="search-results grid grid-cols-4 gap-4 mt-4 pb-10"
+        scrollThreshold={1}
+        dataLength={mappedResults.length} //This is important field to render the next data
+        next={getMoreResults}
+        hasMore={more}
+        loader={<p className="text-center col-span-4 pt-2 pb-5 text-lg italic">
+          Loading...
+        </p>}
+        endMessage={
+          <p className="text-center col-span-4 pt-2 pb-5 text-lg font-bold">
+            {mappedResults.length > LIMIT && '🎉 Yay! You have seen it all'}
+          </p>
+        }>
+        {mappedResults}
+      </InfiniteScroll>
     </div>
+
   )
 }
