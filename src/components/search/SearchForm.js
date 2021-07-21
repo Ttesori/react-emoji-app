@@ -65,8 +65,8 @@ export default function SearchForm() {
     <form className="flex flex-col justify-center items-center w-full">
       <label htmlFor="search" className="sr-only">Search The Emojis</label>
       <div className="fieldset flex w-full">
-        <input className="px-3 sm:px-5 py-2 border bg-gray-50 dark:border-indigo-700 rounded mr-2 dark:bg-indigo-900 dark:text-indigo-200 placeholder-gray-400 dark:placeholder-indigo-400 sm:flex-1 outline-none focus:ring ring-indigo-200 dark:ring-indigo-500" type="text" placeholder="Search..." id="search" onChange={handleTerm} value={searchTerm} />
-        <button className="btn-form mr-1" onClick={handleSearch}><FaSearch /></button>
+        <input className="px-3 sm:px-5 py-1.5 sm:py-2 border bg-gray-50 dark:border-blue-700 rounded mr-2 dark:bg-blue-900 dark:text-blue-200 placeholder-gray-400 dark:placeholder-blue-400 outline-none focus:ring ring-blue-200 dark:ring-blue-500 w-5/6 sm:w-11/12" type="text" placeholder="Search..." id="search" onChange={handleTerm} value={searchTerm} autoComplete="off" />
+        <button className="bg-blue-300 px-2 sm:px-5 py-2 rounded dark:bg-blue-500 dark:text-blue-900 hover:bg-blue-700 hover:text-white font-bold  border border-blue-400 dark:border-blue-700 dark:hover:bg-blue-400 sm:text-lg ml-1 w-1/6 sm:w-1/12 text-center" onClick={handleSearch}><FaSearch className="inline" /></button>
 
       </div>
 

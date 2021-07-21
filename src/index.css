@@ -5,35 +5,30 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  @apply bg-indigo-50 text-indigo-900 dark:bg-gray-900;
-}
-
-* {
-  @apply transition-all;
+  @apply bg-blue-50 text-blue-900 dark:bg-gray-900 dark:text-white;
 }
 
 #root {
-  @apply bg-indigo-50 text-indigo-900 dark:bg-gray-900 dark:text-white min-h-screen flex justify-between flex-col h-screen overflow-visible;
+  @apply min-h-screen flex justify-between flex-col h-screen;
 }
 
 .emoji {
-  transform: translateY(0.5rem);
+  /* transform: translateY(0.5rem);
   animation-name: popIn;
   animation-duration: 300ms;
   animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; */
 }
 
 .btn-icon {
-  @apply py-1.5 px-2 bg-gray-100 text-gray-400 border border-gray-300 mx-0.5 rounded dark:border-gray-900 hover:bg-indigo-300 hover:border-indigo-500 hover:text-indigo-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-700;
+  @apply py-1.5 px-2 bg-gray-100 text-gray-400 border border-gray-300 mx-0.5 rounded dark:border-gray-900 hover:bg-blue-300 hover:border-blue-500 hover:text-blue-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-700;
 }
 
 header .btn-icon {
-  @apply py-1.5 px-2 bg-indigo-300 text-indigo-700 border border-indigo-500 mx-0.5 rounded dark:border-indigo-800 hover:bg-indigo-500 hover:text-white dark:bg-indigo-500 dark:text-indigo-800 dark:hover:bg-indigo-400 text-lg;
+  @apply py-1.5 px-2 bg-blue-300 text-blue-700 border border-blue-500 mx-0.5 rounded dark:border-blue-800 hover:bg-blue-500 hover:text-white dark:bg-blue-500 dark:text-blue-800 dark:hover:bg-blue-400 text-lg;
 }
 
 .btn-form {
-  @apply bg-indigo-300 px-3 sm:px-5 py-2 rounded dark:bg-indigo-500 dark:text-indigo-900 hover:bg-indigo-700 hover:text-white font-bold  border border-indigo-400 dark:border-indigo-700 dark:hover:bg-indigo-400 text-lg;
 }
 
 @keyframes popIn {
