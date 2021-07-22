@@ -31,7 +31,7 @@ export default function Main({ children }) {
         </div>
 
       </header>
-      <main className="w-full max-w-screen-md mx-auto px-5 flex flex-col justify-self-start justify-start items-center ">
+      <main className="w-full max-w-screen-md mx-auto px-5 flex flex-col justify-self-start justify-start items-center flex-1">
         {children}
       </main>
       <ToastContainer />

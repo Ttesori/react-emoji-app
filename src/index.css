@@ -3,13 +3,19 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  height: -webkit-fill-available;
+}
+
 body {
+  min-height: -webkit-fill-available;
   font-family: 'Poppins', sans-serif;
-  @apply bg-blue-50 text-blue-900 dark:bg-gray-900 dark:text-white;
+  @apply bg-blue-50 text-blue-900 dark:bg-gray-900 dark:text-white sm:min-h-screen;
 }
 
 #root {
-  @apply min-h-screen flex justify-between flex-col h-screen;
+  min-height: -webkit-fill-available;
+  @apply flex justify-between flex-col sm:min-h-screen;
 }
 
 .emoji {

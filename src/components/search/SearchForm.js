@@ -66,7 +66,7 @@ export default function SearchForm() {
         <button className="bg-blue-300 px-2 sm:px-5 py-2 rounded dark:bg-blue-500 dark:text-blue-900 hover:bg-blue-700 hover:text-white font-bold  border border-blue-400 dark:border-blue-700 dark:hover:bg-blue-400 sm:text-lg ml-1 w-1/6 sm:w-1/12 text-center transition-all" onClick={handleSearch}><FaSearch className="inline" /></button>
 
       </div>
-      <button className="mt-3 w-full inline-block text-red-700 text-sm hover:text-red-500 transition-all" onClick={handleClear}><FaTimes className="inline" /> Clear Search</button>
+      <button className="mt-3 w-full inline-block text-red-700 dark:text-blue-400 text-sm hover:text-red-500 dark:hover:text-blue-100 transition-all" onClick={handleClear}><FaTimes className="inline" /> Clear Search</button>
     </form>
   )
 }
