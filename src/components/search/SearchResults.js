@@ -32,6 +32,8 @@ export default function SearchResults() {
 
 
   useEffect(() => {
+    setMore(true);
+    setStartingAt(0);
     const mapResults = () => {
       if (searchResults.length === 0) {
         dispatch({
