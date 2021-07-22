@@ -19,11 +19,11 @@ body {
 }
 
 .emoji {
-  /* transform: translateY(0.5rem);
-  animation-name: popIn;
-  animation-duration: 300ms;
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 150ms;
   animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards; */
+  animation-fill-mode: forwards;
 }
 
 .btn-icon {
@@ -49,13 +49,11 @@ header nav a:hover {
 .btn-form {
 }
 
-@keyframes popIn {
+@keyframes fadeIn {
   from {
-    transform: translateY(0.5rem);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
     opacity: 1;
   }
 }
