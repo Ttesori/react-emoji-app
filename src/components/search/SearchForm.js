@@ -62,11 +62,11 @@ export default function SearchForm() {
     <form className="flex flex-col justify-center items-center w-full">
       <label htmlFor="search" className="sr-only">Search The Emojis</label>
       <div className="fieldset flex w-full">
-        <input className="px-3 sm:px-5 py-1.5 sm:py-2 border bg-gray-50 dark:border-blue-700 rounded mr-2 dark:bg-blue-900 dark:text-blue-200 placeholder-gray-400 dark:placeholder-blue-400 outline-none focus:ring ring-blue-200 dark:ring-blue-500 w-5/6 sm:w-11/12" type="text" placeholder="Enter search term..." id="search" onChange={handleTerm} value={searchTerm} autoComplete="off" />
-        <button className="bg-blue-300 px-2 sm:px-5 py-2 rounded dark:bg-blue-500 dark:text-blue-900 hover:bg-blue-700 hover:text-white font-bold  border border-blue-400 dark:border-blue-700 dark:hover:bg-blue-400 sm:text-lg ml-1 w-1/6 sm:w-1/12 text-center transition-all" onClick={handleSearch}><FaSearch className="inline" /></button>
+        <input className="px-3 sm:px-5 py-1.5 sm:py-2 border bg-gray-50 dark:border-gray-600 rounded mr-2 dark:bg-gray-800 dark:text-blue-200 placeholder-gray-400 dark:placeholder-gray-400 outline-none focus:ring ring-blue-200 dark:ring-blue-600 w-5/6 sm:w-11/12" type="text" placeholder="Enter search term..." id="search" onChange={handleTerm} value={searchTerm} autoComplete="off" />
+        <button className="bg-blue-300 px-2 sm:px-5 py-2 rounded dark:bg-blue-500 dark:text-gray-800 hover:bg-blue-700 hover:text-white font-bold  border border-blue-400 dark:border-blue-600 dark:hover:bg-blue-400 sm:text-lg ml-1 w-1/6 sm:w-1/12 text-center transition-all" onClick={handleSearch}><FaSearch className="inline" /></button>
 
       </div>
-      <button className="mt-3 w-full inline-block text-red-700 dark:text-blue-400 text-sm hover:text-red-500 dark:hover:text-blue-100 transition-all" onClick={handleClear}><FaTimes className="inline" /> Clear Search</button>
+      <button className="mt-3 w-full inline-block text-red-700 dark:text-gray-400 text-sm hover:text-red-500 dark:hover:text-gray-100 transition-all" onClick={handleClear}><FaTimes className="inline" /> Clear Search</button>
     </form>
   )
 }
