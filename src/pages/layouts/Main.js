@@ -7,7 +7,7 @@ import ACTIONS from '../../reducers/app-actions'
 import { FaSun, FaMoon } from 'react-icons/fa';
 
 export default function Main({ children }) {
-  const { theme, dispatch, favorites } = useContext(AppContext);
+  const { theme, dispatch } = useContext(AppContext);
   const handleSwitchTheme = () => {
     console.log('switching theme');
     dispatch({
@@ -31,7 +31,7 @@ export default function Main({ children }) {
         </div>
 
       </header>
-      <main className="w-full max-w-screen-md mx-auto my-2 sm:my-5 px-5 flex flex-col justify-center items-center">
+      <main className="w-full max-w-screen-md mx-auto px-5 flex flex-col justify-self-start justify-start items-center ">
         {children}
       </main>
       <ToastContainer />

@@ -1,7 +1,7 @@
 import AppContext from '../../contexts/app-context';
 import { FaRegCopy, FaHeart, FaRegHeart, FaCheck } from "react-icons/fa";
 import BtnIcon from "../common/BtnIcon";
-import { useContext, useState, useMemo } from 'react';
+import { useContext, useState } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { toast, Zoom } from 'react-toastify';
 import ACTIONS from '../../reducers/app-actions'
@@ -13,15 +13,6 @@ export default function Emoji({ emoji }) {
   const [copied, setCopied] = useState(false);
 
   const isFavorite = (emoji) => favorites.some(favorite => emoji.slug === favorite.slug);
-
-  // const localToggleFavorite = (id) => {
-  //   dispatch({
-  //     type: ACTIONS.TOGGLE_FAVORITE,
-  //     payload: {
-  //       id
-  //     }
-  //   })
-  // }
 
   const localToggleFavorite = (emoji) => {
     dispatch({
