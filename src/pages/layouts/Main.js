@@ -1,7 +1,7 @@
 import AppContext from '../../contexts/app-context';
 import { useContext } from "react";
 import { ToastContainer } from "react-toastify";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import BtnIcon from '../../components/common/BtnIcon';
 import ACTIONS from '../../reducers/app-actions'
 import { FaSun, FaMoon } from 'react-icons/fa';
@@ -21,7 +21,7 @@ export default function Main({ children }) {
     <>
       <header className="bg-blue-300 p-5  dark:bg-blue-800 dark:text-white mb-5 sm:mb-7 border border-b-4 border-blue-200 dark:border-blue-900">
         <div className="container flex flex-col sm:flex-row justify-between items-center max-w-screen-lg mx-auto">
-          <h1 className="text-2xl sm:text-xl font-bold text-blue-900 dark:text-blue-50 mb-2 sm:mb-0"><span className="text-3xl mr-1">🕵️‍♀️ </span> EmojiHunt</h1>
+          <h1 className="text-2xl sm:text-xl font-bold text-blue-900 dark:text-blue-50 mb-2 sm:mb-0"><span className="text-3xl mr-1">🕵️‍♀️ </span> <Link to="/">EmojiHunt</Link></h1>
           <nav>
             <NavLink exact to="/" className="mr-3" activeClassName="font-bold">Search</NavLink>
             <NavLink exact to="/favorites" className="mr-3" activeClassName="font-bold">Favorites
