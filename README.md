@@ -1,4 +1,4 @@
-# EmojiSearch: Save Your Favorite Emojis
+# EmojiHunt: Save Your Favorite Emojis
 
 ![screenshot of EmojiHunt home page](https://emoji-search-app.netlify.app/img/eh-screenshot.png)
 
