@@ -40,10 +40,10 @@ export default function Emoji({ emoji }) {
     }, 2000);
   }
 
-  return (emoji.character.length > 0) && (
+  return (
     <article className="emoji shadow bg-white dark:bg-gray-700 rounded p-3 text-center flex flex-col justify-between items-center">
       <span className="text-5xl">{emoji.character}</span>
-      <h3 className="text-xs uppercase text-gray-500 mt-2 dark:text-gray-300">{emoji.unicodeName}</h3>
+      <h3 className="text-xs uppercase text-gray-500 mt-2 dark:text-gray-300">{emoji.unicodeName || emoji.slug}</h3>
 
       <footer className="mt-2">
         <CopyToClipboard text={emoji.character}

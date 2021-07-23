@@ -18,7 +18,7 @@ export default function SearchResults() {
     setMore(searchResults.length - (startingAt + LIMIT) > 0 ? true : false);
     const mapped = [...mappedResults, ...mapResultsToEmoji(results)];
     setMappedResults(mapped);
-    setStartingAt(startingAt + LIMIT)
+    setStartingAt(startingAt + LIMIT);
   }
 
   const mapResultsToEmoji = (arr) => {
@@ -47,9 +47,10 @@ export default function SearchResults() {
       let results;
       if (searchResults.length > LIMIT) {
         results = mapResultsToEmoji(searchResults.slice(0, LIMIT));
-        setStartingAt(startingAt + LIMIT);
+        setStartingAt(LIMIT);
         setMore(true);
       } else {
+        setStartingAt(0);
         results = mapResultsToEmoji(searchResults);
         setMore(false);
       }

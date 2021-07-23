@@ -27,7 +27,6 @@ function App() {
 
   const processEmojiVariants = () => {
     let variants = EMOJIS.filter(emoji => emoji?.variants).map(emoji => emoji.variants);
-    console.log(variants);
     return variants;
   }
 

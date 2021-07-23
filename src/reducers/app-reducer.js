@@ -8,7 +8,7 @@ const reducer = (state, action) => {
     case ACTIONS.SET_TERM:
       return ({ ...state, searchTerm: action.payload.term })
     case ACTIONS.SET_RESULTS:
-      let found = EMOJIS.filter(emoji => emoji.slug.includes(action.payload.term) || emoji.group.includes(action.payload.term));
+      let found = EMOJIS.filter(emoji => emoji.slug.includes(action.payload.term) || emoji?.group.includes(action.payload.term));
       return ({ ...state, searchResults: found })
     case ACTIONS.CLEAR_RESULTS:
       return ({ ...state, searchResults: [] })
