@@ -25,6 +25,12 @@ function App() {
     loading: false
   });
 
+  const processEmojiVariants = () => {
+    let variants = EMOJIS.filter(emoji => emoji?.variants).map(emoji => emoji.variants);
+    console.log(variants);
+    return variants;
+  }
+
   useEffect(() => {
     let faves = localStorage.getItem('emoji-favs');
     if (faves) {
@@ -59,7 +65,7 @@ function App() {
   }
 
   return isLoading ? <p>Loading...</p> : (
-    <EmojiContext.Provider value={{ emojis: EMOJIS }}>
+    <EmojiContext.Provider value={{ emojis: [...EMOJIS, ...processEmojiVariants()] }}>
       <AppContext.Provider value={contextValue}>
         <Router>
           <Switch>
